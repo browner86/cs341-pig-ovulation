@@ -28,6 +28,15 @@ const pigs = [
 
 
 export const get = async (req, res) => {
+  return {
+    status: 200,
+    body: {
+      pigs: pigs,
+    }
+  }
+}
+
+export const post = async (req, res) => {
   let pigResponse = pigs;
 
   if (req.body !== undefined && req.body.farmId !== undefined) {

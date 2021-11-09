@@ -2,33 +2,32 @@
 	<title>About</title>
 </svelte:head>
 
-<div class="content">
-	<h1>About this app</h1>
+<div class="row">
+	<h1>Deterimining ovulation cycle in hogs</h1>
+	<h2>Why would you need to know the ovulation cycle of your pigs?</h2>
+	<p>Short answer: Pigs eat a lot of feed and feed costs money.</p>
 
 	<p>
-		This is a <a href="https://kit.svelte.dev">SvelteKit</a> app. You can make your own by typing the
-		following into your command line and following the prompts:
-	</p>
-
-	<!-- TODO lose the @next! -->
-	<pre>npm init svelte@next</pre>
-
-	<p>
-		The page you're looking at is purely static HTML, with no client-side interactivity needed.
-		Because of that, we don't need to load any JavaScript. Try viewing the page's source, or opening
-		the devtools network panel and reloading.
+		Pigs are one of the most popular animals for first time farmers and homesteaders. This is partly
+		because they can be raised from birth to market in just 17 weeks. The pig farming game is all
+		about efficiency and timing.
 	</p>
 
 	<p>
-		The <a href="/todos">TODOs</a> page illustrates SvelteKit's data loading and form handling. Try using
-		it with JavaScript disabled!
+		Breeding pigs can get particularly costly due to the cost of feeding the sows year round. If the
+		enterprise also is feeding a boar year round costs go up significantly. Many pig farmers opt to
+		using artificial insemenation to keep their sows bred to cut feed costs and allow for a more
+		diverce gene pool.
 	</p>
+
+	<p>
+		In order to efficiently and effectivly perform artificial insemenation, the farmer must know which 
+		day in the sow's cycle will the service be effective. The farmer also needs to know if the insemenation 
+		was successfull, which can also be determined by careful monitoring of the hogs estrus cycle.
+	<p/>
+
+	<h2>How to check the ovulation cycle in pigs.</h2>
+
+	<p>sows and gilts(females being bred for the first time) have a 21 day ovulation cycle. </p>
 </div>
 
-<style>
-	.content {
-		width: 100%;
-		max-width: var(--column-width);
-		margin: var(--column-margin-top) auto 0 auto;
-	}
-</style>

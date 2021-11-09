@@ -15,6 +15,10 @@ const routes = [
 		name: 'Todos',
 	},
 	{
+		path: '/farms',
+		name: 'Farms',
+	},
+	{
 		path: '/testing',
 		name: 'Testing',
 	},
