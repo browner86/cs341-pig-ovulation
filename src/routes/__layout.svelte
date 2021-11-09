@@ -18,7 +18,7 @@
 	onMount(async () => {
 		// When we load a page check to see if we need to be logged in before accessing it
 		if (await userNeedsToLogin({ page: $page })) {
-			await goto('/login');
+			// await goto('/login');
 		}
 	});
 </script>
@@ -26,7 +26,7 @@
 
 <Navigation />
 
-<main>
+<main class="container">
 	<slot />
 </main>
 

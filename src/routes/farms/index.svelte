@@ -1,40 +1,42 @@
-<script lang="ts" context="module">
-	export async function load({ fetch }) {
-		const res = await fetch(`/farms/getFarms.json`);
+<script context="module">
+  export async function load({ fetch }) {
+    const res = await fetch('/farms/getfarms');
 
-		if (res.ok) {
-			const body = await res.json();
-
-			// When we return props we're looking to assign these values to
-			// any of our exports from our main 'script' tag. Note that we have `export let farms;`
-			// so that we can pass this data into our component.
-			return {
-				props: {
-					farms: body.farms,
-				},
-			};
-		}
-	};
+    if (res.ok) {
+      const body = await res.json();
+      return {
+        props: { farms: body.farms },
+      };
+    }
+  };
 </script>
 
 <script lang="ts">
-	import List from '$lib/List.svelte';
-	export let farms;
+
+type Farm = {
+    uid: string;
+		name: string;
+	};
+
+  export let farms: Farm[];
 </script>
 
-<h1>Current Farms</h1>
+<svelte:head>
+  <title>My Farms</title>
+</svelte:head>
 
-<List items={farms}/>
+<h1>My Farms</h1>
 
 <ul>
-	{#each farms as farm}
-	<li>{farm}</li>
-	{/each}
+  {#each farms as farm (farm.uid)}
+    <li><a href='farms/{farm.uid}'>{farm.name}</a></li>
+  {/each}
 </ul>
 
 <style>
-	ul {
-		background-color: black;
-		color: red;
-	}
+  li {
+    list-style: none;
+    padding: 10px;
+    font-size: 20px;
+  }
 </style>
