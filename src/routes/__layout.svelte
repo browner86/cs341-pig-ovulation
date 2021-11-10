@@ -1,26 +1,28 @@
-
-<script lang="ts">
-	import { onMount } from 'svelte';
-	import { page } from '$app/stores';
-	import { goto } from '$app/navigation';
-
+<script context="module">
 	import { userNeedsToLogin } from '$lib/guards';
 
+	export async function load({ page, session }) {
+		if (await userNeedsToLogin({ page, session })) {
+			return {
+				status: 302,
+				redirect: '/login'
+			};
+		}
+
+		return {};
+	}
+</script>
+
+
+<script lang="ts">
 	// Get the Header component so we can display our nav
-	import Navigation from '$lib/Navigation.svelte';
+	import Navigation from '$lib/components/Navigation.svelte';
 
 	// Import all the bootstrap styles
 	import 'bootstrap/dist/css/bootstrap.min.css';
 
 	// Import our global styles
 	import '../app.css';
-
-	onMount(async () => {
-		// When we load a page check to see if we need to be logged in before accessing it
-		if (await userNeedsToLogin({ page: $page })) {
-			// await goto('/login');
-		}
-	});
 </script>
 
 

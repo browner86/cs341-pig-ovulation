@@ -26,14 +26,8 @@
 </script>
 
 <script lang="ts">
-  import PigList from '$lib/PigList.svelte';
-
-  type Pig = {
-    uid: string;
-    name: string;
-    img: string;
-    farmID: string;
-  };
+  import type { Pig } from '$lib/types';
+  import PigList from '$lib/components/PigList.svelte';
 
   export let pigs: Pig[];
 </script>
