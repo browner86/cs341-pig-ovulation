@@ -12,7 +12,7 @@
 </script>
 
 <script lang="ts">
-  import PigList from '$lib/PigList.svelte';
+  import PigList from '$lib/components/PigList.svelte';
 
   type Pig = {
     uid: string;

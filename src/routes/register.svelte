@@ -1,28 +1,33 @@
 <script lang="ts">
-	// import { goto, invalidate } from '$app/navigation';
+	import { goto } from '$app/navigation';
 
 	let email: string;
 	let password: string;
+	let password1: string;
 	let errorMessage = '';
 
-	async function login() {
+	async function register() {
+		errorMessage = '';
+
+		if (password !== password1) {
+			errorMessage = 'Passwords do not match!';
+			return;
+		}
+
 		const res = await fetch(
-			'/auth/login',
+			'/auth/register',
 			{
 				method: 'POST',
 				body: JSON.stringify({
 					email,
 					password,
+					password1,
 				}),
 			},
 		);
 
 		if (res.ok) {
-			// Normally we'd be fancy by using goto(), but that doesn't get the cookie to reload correctly
-			// So we need to do a full page load with an actual changing of the location
-			window.location.href = '/';
-			// await invalidate('/');
-			// await goto('/');
+			goto('/login');
 		} else {
 			const body = await res.json();
 			errorMessage = body.message;
@@ -32,7 +37,7 @@
 </script>
 
 <svelte:head>
-	<title>Login</title>
+	<title>Register</title>
 </svelte:head>
 
 <div class="row d-flex justify-content-center mt-5">
@@ -50,13 +55,17 @@
 					<label for="password" class="form-label">Password</label>
 					<input bind:value={password} type="password" class="form-control" id="password" placeholder="*****">
 				</div>
+				<div class="mb-3">
+					<label for="password1" class="form-label">Repeat Password</label>
+					<input bind:value={password1} type="password" class="form-control" id="password1" placeholder="*****">
+				</div>
 				{#if errorMessage.length > 0}
 				<div class="alert alert-danger py-2" role="alert">
 					{errorMessage}
 				</div>
 				{/if}
-				<button class="btn btn-primary" on:click={login}>Login</button>
-				<a href="/register" class="btn btn-secondary">Register</a>
+				<button class="btn btn-primary" on:click={register}>Register</button>
+				<a href="/login" class="btn btn-secondary">Login</a>
 			</div>
 		</div>
 	</div>
