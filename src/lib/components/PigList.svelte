@@ -12,7 +12,7 @@
 <ul>
   {#each pigs as pig}
     <li>
-      <a href='/pigs/{pig.uid}'>
+      <a href="/pigs/{pig.uid}">
         <div>
           <img src="{ pig.img }" alt="Photo of { pig.name }">
           <p>{pig.name}</p>

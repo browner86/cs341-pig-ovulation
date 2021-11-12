@@ -3,8 +3,6 @@ import mongoose from 'mongoose';
 import { v4 as uuid } from 'uuid';
 
 const saltRounds = 10;
-const hashTTL = 30 * 60 * 1000; // 30 mintues
-const baseUrl = 'https://nameless-beyond-44302.herokuapp.com';
 
 // Create the schema
 export const userSchema = new mongoose.Schema({
