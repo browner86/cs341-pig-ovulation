@@ -43,5 +43,11 @@
 		max-width: 1024px;
 		margin: 0 auto;
 		box-sizing: border-box;
+		background-color: #FAF9F6a6;
+
+		
+		
+		
 	}
+
 </style>

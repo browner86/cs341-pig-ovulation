@@ -1,55 +1,51 @@
-<script lang="ts">
-	import Counter from '$lib/components/Counter.svelte';
-</script>
+<script context="module" lang="ts">
+	export async function load({ fetch, page }) {
+	  const _id = 1;
+	  console.log(_id);
+  
+	  const res = await fetch('/pigs/getpigs', {
+		method: 'post',
+		headers: {
+		  'Accept': 'application/json',
+		  'Content-Type': 'application/json'
+		},
+		body: JSON.stringify({
+		  farmId: _id,
+		}, null, 2),
+	  });
+  
+	  console.log(res);
+	  
+	  if (res.ok) {
+		const body = await res.json();
+		return {
+		  props: { pigs: body.pigs, },
+		};
+	  }
+	};
+  </script>
+  <script lang="ts">
+	import type { Pig } from '$lib/types';
+	import PigList from '$lib/components/PigList.svelte';
+  
+	export let pigs: Pig[];
+  </script>
+  
+  <h1>My Farm</h1>
 
-<svelte:head>
-	<title>Home</title>
-</svelte:head>
-
-<section>
-	<h1>
-		<div class="welcome">
-			<picture>
-				<source srcset="svelte-welcome.webp" type="image/webp" />
-				<img src="svelte-welcome.png" alt="Welcome" />
-			</picture>
-		</div>
-
-		to your new<br />SvelteKit app
-	</h1>
-
-	<h2>
-		try editing <strong>src/routes/index.svelte</strong>
-	</h2>
-
-	<Counter />
-</section>
+  <a class="btn btn-primary" href="/pigs/new">Add New Pig</a>
+  
+  <PigList {pigs} />
+  
 
 <style>
-	section {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		flex: 1;
-	}
 
-	h1 {
-		width: 100%;
-	}
-
-	.welcome {
+	:global(body) {
+		background-image: url('../static/pascal-debrunner-b-zyMn_e_R4-unsplash.jpg');
+		width: 100vh;
 		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
-
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center;
 	}
 </style>
