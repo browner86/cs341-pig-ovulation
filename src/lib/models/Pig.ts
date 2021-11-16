@@ -1,4 +1,4 @@
-import bcrypt from 'bcrypt';
+
 import mongoose from 'mongoose';
 import { v4 as uuid } from 'uuid';
 
