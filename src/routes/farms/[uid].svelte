@@ -36,8 +36,14 @@
   <title>My Farm</title>
 </svelte:head>
 
-<h1>My Farm</h1>
+<h1 class="mx-auto my-3">My Farm</h1>
 
-<a class="btn btn-primary" href="/pigs/new">Add New Pig</a>
+<a class="btn btn-primary btn-sm p-1 mx-auto my-3" href="/pigs/new">Add New Pig</a>
 
 <PigList {pigs} />
+
+<style>
+  a {
+    width: 120px;
+  }
+</style>

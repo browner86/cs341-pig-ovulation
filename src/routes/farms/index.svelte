@@ -25,18 +25,14 @@ type Farm = {
   <title>My Farms</title>
 </svelte:head>
 
-<h1>My Farms</h1>
+<h1 class="mx-auto">My Farms</h1>
 
-<ul>
+<ul class="list-unstyled mx-auto w-75">
   {#each farms as farm (farm.uid)}
-    <li><a href='farms/{farm.uid}'>{farm.name}</a></li>
+    <li class="p-1"><a href='farms/{farm.uid}' class="text-decoration-none fs-3">{farm.name}</a></li>
   {/each}
 </ul>
 
 <style>
-  li {
-    list-style: none;
-    padding: 10px;
-    font-size: 20px;
-  }
+  
 </style>

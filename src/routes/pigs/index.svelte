@@ -28,7 +28,7 @@
   <title>My pigs</title>
 </svelte:head>
 
-<h1>My pigs</h1>
+<h1 class="mx-auto">My pigs</h1>
 
 <a class="btn btn-primary" href="/pigs/new">Add New Pig</a>
 

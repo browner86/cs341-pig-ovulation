@@ -7,6 +7,9 @@ export type Pig = {
 	uid: string;
 	name: string;
 	img: string;
-	farmID: string;
+	birthDate: string;
+	breed: string;
+	description: string;
+	farmId: string;
 };
 
