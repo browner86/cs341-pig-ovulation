@@ -36,7 +36,7 @@
 </svelte:head>
 
 <div class="row d-flex justify-content-center mt-5">
-	<div class="col-md-4 card">
+	<div class="col-md-4 card border-0 bg-transparent">
 		<div class="card-body">
 			<div class="card-title mb-3">
 				<h2>Login</h2>

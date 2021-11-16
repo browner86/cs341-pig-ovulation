@@ -1,18 +1,27 @@
 import mongoose from 'mongoose';
 
-// Create the schema
+export const pigSnapshotSchema = new mongoose.Schema({
+  img:              String,
+  isSwelling:       Boolean,
+  presumedPregnant: Boolean,
+  notes:            String,
+  pig:              { type: mongoose.Schema.Types.ObjectId, ref: 'Pig' },
+  timestamp:        Date,
+});
 
-export const PigSchema = new mongoose.Schema({
-  name: string,
-  img: string,
-  birthDate: string,
-  breed: string,
-  description: string,
-  farmId: Number,
+// Create the schema
+export const pigSchema = new mongoose.Schema({
+  name:        String,
+  img:         String,
+  birthDate:   String,
+  breed:       String,
+  description: String,
+  farmId:      Number,
 });
 
 // Create the actual model to use
-export const Pig = mongoose.model('Pig', pigSchema);
+export const Pig         = mongoose.model('Pig',         pigSchema);
+export const PigSnapshot = mongoose.model('PigSnapshot', pigSnapshotSchema);
 
 // Export all the methods as a singleton to use with the user
 export default {
@@ -42,6 +51,33 @@ export default {
 
     return pig;
   },
+
+  createSnapshot: async (pig, { img, isSwelling, presumedPregnant, notes, timestamp }) => {
+    if (!mongoose.Types.ObjectId.isValid(pig._id)) {
+      return null;
+    }
+
+    const pigSnapshot = new PigSnapshot({
+      pig:              pig._id,
+      img:              img              || 'https://via.placeholder.com/300?text=Pig',
+      isSwelling:       isSwelling       || false,
+      presumedPregnant: presumedPregnant || false,
+      notes:            notes            || '',
+      timestamp:        timestamp        || Date.now(),
+    });
+
+    await pigSnapshot.save();
+
+    return pigSnapshot;
+  },
+
+  getSnapshots: async (pig) => {
+    if (!mongoose.Types.ObjectId.isValid(pig._id)) {
+      return null;
+    }
+
+    return await PigSnapshot.find({ pig: pig._id }).exec();
+  }
 
 };
 
