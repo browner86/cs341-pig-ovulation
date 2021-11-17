@@ -1,6 +1,9 @@
 {
   "name": "cs341-pig-ovulation",
   "version": "0.0.1",
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
     "start": "npm build",
     "dev": "svelte-kit dev --host",
