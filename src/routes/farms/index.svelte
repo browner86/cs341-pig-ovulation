@@ -32,7 +32,8 @@ type Farm = {
     <li class="p-1"><a href='farms/{farm.uid}' class="text-decoration-none fs-3">{farm.name}</a></li>
   {/each}
 </ul>
+<a href='/farms/new' class='btn btn-primary'>Add New Farm</a>
 
 <style>
-  
+
 </style>
