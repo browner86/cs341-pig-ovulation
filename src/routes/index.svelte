@@ -1,40 +1,23 @@
-<script context="module" lang="ts">
-export async function load({ fetch, page }) {
-  const _id = 1;
-  console.log(_id);
+<svelte:head>
+	<title>Track My Farm</title>
+</svelte:head>
 
-  const res = await fetch('/pigs/getpigs', {
-    method: 'post',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      farmId: _id,
-    }, null, 2),
-  });
+<main class="px-3">
+  <p class="display-2"> Welcome to TrackMy.Farm</p>
+	<!-- <h1 class=""> Welcome to TrackMy.Farm</h1> -->
+  <p class="lead">Farm data management for the rest of us.</p>
+  <p>Login or Sign up to try our new pig estruation tracking app </p>
+  <div class="row">
+  <p class="lead">
+    <a href="/login" class="btn btn-med btn-secondary fw-bold border-white bg-dark">Login</a>
+    <a href="/register" class="btn btn-med btn-secondary fw-bold border-white bg-dark">Sign up</a>
+  </p>
+  <p>learn More about tracking pig estruation with our app.</p>
+  <p>
+    <a href="about" class="btn btn-med btn-secondary fw-bold border-white bg-dark"> Learn More!</a>
+  
+  </p>
 
-  console.log(res);
-
-  if (res.ok) {
-    const body = await res.json();
-    return {
-      props: { pigs: body.pigs, },
-    };
-  }
-};
-</script>
-<script lang="ts">
-import type { Pig } from '$lib/types';
-import PigList from '$lib/components/PigList.svelte';
-
-export let pigs: Pig[];
-</script>
-
-<h1>My Farm</h1>
-
-<a class="btn btn-primary" href="/pigs/new">Add New Pig</a>
-
-<PigList {pigs} />
+</main>
 
 

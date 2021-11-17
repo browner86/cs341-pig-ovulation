@@ -36,6 +36,15 @@ const pigs = [
     description: 'Description for Pig D',
     farmId: 2
   },
+  {
+    uid: '4',
+    name: 'Pig D',
+    img: 'https://cdn.pixabay.com/photo/2014/07/08/13/39/pigs-387204__340.jpg',
+    birthDate: '1/01/2021',
+    breed: 'Berkshire',
+    description: 'Description for Pig D',
+    farmId: 3
+  },
 ];
 
 
